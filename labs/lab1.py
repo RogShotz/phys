@@ -7,7 +7,6 @@ line_x=cylinder(pos = offset, axis= (0,-offset.y*2), radius =.1)
 ball = sphere (pos = offset, color = color.orange, radius = 0.5)
 velInit = vector(10, 10)
 ball.vel = velInit
-arrow (pos=ball.pos, axis = velInit*.1, color = color.green)
 outputs = 100
 deltat = float(1.0/outputs) #specify sigs by inputting a point for sig
 print(deltat)
