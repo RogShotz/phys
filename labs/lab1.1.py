@@ -34,19 +34,19 @@ deltat = .01
 t = 0
 a_0 = vector(0 , -9.8)
 a = vector(0, -9.8)
-Tao = -1000              #only seems to have a noticable change between # and #
+Tao = 100           #only seems to have a noticable change between # and #
 inc = .1                #the amount we will subract from Tao for each iteration
 yDefault = line_x.y + line_x.radius + ball.radius   #default y position that nothing should go below
 replay = false          #restarts the animation(resets the ball position to origin)
 inputDriven = false     #allows for input from user
 simActive = true        #Helps to stop while loop when the ball is at the bottem
-simSpeed = 1
+simSpeed = .01
 
 while ball.pos.y >= yDefault and simActive == true:
     rate(simSpeed/deltat)
 
     #print to screen
-    print("Y Position:% .3f, Time:% .3f, Tao:% .3f, a: % .3f ,V: % .3f" %((ball.pos.y - line_x.pos.y + line_x.radius),
+    print("Y:% .3f, t:% .3f, T:% .3f, a: % .3f ,v: % .3f" %((ball.pos.y - line_x.pos.y + line_x.radius),
                                                     t,
                                                     Tao,
                                                     a.y,
@@ -56,7 +56,7 @@ while ball.pos.y >= yDefault and simActive == true:
     a = a_0 * math.e**(-t/Tao)
 
     #Updates the balls 'VELOCITY'
-    ball.vel = (ball.vel + a*deltat)
+    ball.vel = (ball.vel - (Tao * a * (math.e**(-t/Tao) - 1)))
     
     #Updates the balls 'POSITION' and makes sure it does not go below the line
     if ball.pos.y + ball.vel.y*deltat < yDefault:
@@ -64,7 +64,7 @@ while ball.pos.y >= yDefault and simActive == true:
         if replay == false:
             simActive = false
     else:
-        ball.pos = (ball.pos+ball.vel*deltat)
+        ball.pos = (ball.pos + ball.vel * t + (a * Tao * (Tao * math.e**(-t/Tao) + t - Tao)))
 
     #Updates 'TIME'
     t = t + deltat
