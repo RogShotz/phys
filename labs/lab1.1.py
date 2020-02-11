@@ -34,7 +34,7 @@ deltat = .01
 t = 0
 a_0 = vector(0 , -9.8)
 a = vector(0, -9.8)
-Tao = -30               #only seems to have a noticable change between # and #
+Tao = .255              #only seems to have a noticable change between # and #
 inc = 1                 #the amount we will subract from Tao for each iteration
 yDefault = line_x.radius #default y position that nothing should go below
 replay = false          #restarts the animation(resets the ball position to origin)
@@ -56,7 +56,7 @@ while ball.pos.y >= yDefault and simActive == true:
     a = a_0 * math.e**(-t/Tao)
 
     #Updates the balls 'VELOCITY'
-    ball.vel = (velInit - (Tao * a * (math.e**(-t/Tao) - 1)))
+    ball.vel += a*deltat
     
     #Updates the balls 'POSITION' and makes sure it does not go below the line
     if (posInit + velInit * t + (a * Tao * (Tao * math.e**(-t/Tao) + t - Tao))) < yDefault:
@@ -64,7 +64,7 @@ while ball.pos.y >= yDefault and simActive == true:
         if replay == false:
             simActive = false
     else:
-        ball.pos = (posInit + velInit * t + (a * Tao * (Tao * math.e**(-t/Tao) + t - Tao)))
+        ball.pos += ball.vel * deltat
 
     #Updates 'TIME'
     t = t + deltat
