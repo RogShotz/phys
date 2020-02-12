@@ -1,57 +1,55 @@
 from visual import *
 
-#Creating backgroud plane (box object)
-background = box(size = vector(4.5, 4.5, .01),
-                  color = color.blue)
-
 
 #Simulation Variables
-offset = 1
-posInit = vector(0, 2) #radius
-ball = sphere (pos = posInit, color = color.white, radius = 0.1)
+offsetScale = 1
+offset = -vector(offsetScale, offsetScale)
+posInit = vector(0, -offset.y)
+
+#Scene
+ball = sphere (pos = posInit, color = color.blue, radius = 0.15)
+line_y=cylinder(pos = -vector(-offset.x, -offset.y + ball.radius + .05),
+                axis= (0,-offset.y*2),
+                radius =.05)
+line_x=cylinder(pos = -vector(offset.x/offset.x, -offset.y + ball.radius + line_y.radius),
+                axis= (-offset.x*2,0), radius =.05)
+background = box(size = vector(4.5, 4.5, .01),
+                  color = color.green)
+
 velInit = vector(0, 0)
 ball.vel = velInit
-
-#creating Lines
-line_y1 = cylinder(pos = vector(posInit.x - 2*ball.radius, -offset),
-                   axis= (0, offset),
-                   radius =.01,
-                   color = color.red)
-line_y2 = cylinder(pos = vector(posInit.x - 2*ball.radius, -offset + offset),
-                   axis= (0, offset),
-                   radius =.01,
-                   color = color.blue)
-line_y3 = cylinder(pos = vector(posInit.x - 2*ball.radius, -offset + 2 * offset),
-                   axis= (0, offset),
-                   radius =.01,
-                   color = color.green)
-line_x = cylinder(pos = vector(-offset, 0),
-                  axis= (2 * offset, 0),
-                  radius =.01,
-                  color = color.black)
 
 deltat = .01
 t = 0
 a_0 = vector(0 , -9.8)
 a = vector(0, -9.8)
-Tao = .255              #only seems to have a noticable change between # and #
+Tao = .225              #only seems to have a noticable change between # and #
 inc = 1                 #the amount we will subract from Tao for each iteration
-yDefault = line_x.radius #default y position that nothing should go below
+yDefault = offset.y     #default y position that nothing should go below
 replay = false          #restarts the animation(resets the ball position to origin)
 inputDriven = false     #allows for input from user
 simActive = true        #Helps to stop while loop when the ball is at the bottem
-simSpeed = .5
+simSpeed = .2
 
+while t < 10:
+    rate(1)
+    t += 1
+
+t=0
 while ball.pos.y >= yDefault and simActive == true:
     rate(simSpeed/deltat)
 
     #print to screen
-    print("Y:% .3f, t:% .3f, T:% .3f, a: % .3f ,v: % .3f" %((ball.pos.y),
+    print("Y:% .3f, t:% .3f, T:% .3f, a: % .3f ,v: % .3f" %((ball.pos.y-offset.y),
                                                     t,
                                                     Tao,
                                                     a.y,
                                                     ball.vel.y))
+    #When it approximately hits terminal vel
+    if (a.y > -0.5):
+        ball.color = color.red
 
+    
     #Updates the balls 'ACCELERATION'
     a = a_0 * math.e**(-t/Tao)
 
@@ -70,14 +68,16 @@ while ball.pos.y >= yDefault and simActive == true:
     t = t + deltat
 
 
-    if replay == true and ball.pos.y == yDefault:        
+    if replay == true and (ball.pos.y - yDefault) < .001:     
+        t=0
+        while t < 10:
+            rate(1)
+            t = t + 1
+        t=0
         #reset ball information
         ball.pos = posInit
-        ball.vel = velInit
-        ball.pos.y = 0
-        t = 0
-        a = vector(0, -10)
-
+        ball.vel = vector(0, 0)
+        a = a_0
         #Input driven
         if inputDriven == true:
             userInput = input("Tao: ")
