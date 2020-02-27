@@ -19,7 +19,7 @@ background = box(size = vector(4.5, 4.5, .01),
 velInit = vector(0, 0)
 ball.vel = velInit      #Inital velocity is 0 in the y direction
 
-deltat = .01            #time is incremented by 1/100 of a second
+deltat = 1/12            #time is incremented by 1/100 of a second
 t = 0                   #Represents time
 a_0 = vector(0 , -9.8)  #Initial Acceleration (does not change)
 a = a_0                 #At the start a = a_0 then changes over time
@@ -28,20 +28,20 @@ yDefault = offset.y     #default y position that nothing should go below
 replay = false          #restarts the animation(resets the ball position to origin)
 inputDriven = false     #allows for input from user
 simActive = true        #Helps to stop while loop when the ball is at the bottem
-simSpeed = .2
+simSpeed = 1
 
 #Timer to make the simpulation not start right away (starts 2 seconds after)
-while t < 2:
+while t < 1:
     rate(1)
     t += 1
 t=0
-
+print("Delta Y, Time, Tao, Acceration, Velocity")
 #The Main update loop
 while ball.pos.y >= yDefault and simActive == true:
-    rate(simSpeed/deltat)
+    rate(12)
 
     #print to screen
-    print("Y:% .3f, t:% .3f, T:% .3f, a: % .3f ,v: % .3f" %((ball.pos.y-offset.y),
+    print("%.3f,%.3f,%.3f,%.3f,%.3f" %((ball.pos.y-offset.y),
                                                     t,
                                                     Tao,
                                                     a.y,
