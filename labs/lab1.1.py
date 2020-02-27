@@ -17,25 +17,26 @@ background = box(size = vector(4.5, 4.5, .01),
                   color = color.green)
 
 velInit = vector(0, 0)
-ball.vel = velInit
+ball.vel = velInit      #Inital velocity is 0 in the y direction
 
-deltat = .01
-t = 0
-a_0 = vector(0 , -9.8)
-a = vector(0, -9.8)
+deltat = .01            #time is incremented by 1/100 of a second
+t = 0                   #Represents time
+a_0 = vector(0 , -9.8)  #Initial Acceleration (does not change)
+a = a_0                 #At the start a = a_0 then changes over time
 Tao = .225              #only seems to have a noticable change between # and #
-inc = 1                 #the amount we will subract from Tao for each iteration
 yDefault = offset.y     #default y position that nothing should go below
 replay = false          #restarts the animation(resets the ball position to origin)
 inputDriven = false     #allows for input from user
 simActive = true        #Helps to stop while loop when the ball is at the bottem
 simSpeed = .2
 
-while t < 10:
+#Timer to make the simpulation not start right away (starts 2 seconds after)
+while t < 2:
     rate(1)
     t += 1
-
 t=0
+
+#The Main update loop
 while ball.pos.y >= yDefault and simActive == true:
     rate(simSpeed/deltat)
 
@@ -70,23 +71,12 @@ while ball.pos.y >= yDefault and simActive == true:
 
     if replay == true and (ball.pos.y - yDefault) < .001:     
         t=0
-        while t < 10:
-            rate(1)
-            t = t + 1
-        t=0
         #reset ball information
         ball.pos = posInit
         ball.vel = vector(0, 0)
         a = a_0
-        #Input driven
-        if inputDriven == true:
-            userInput = input("Tao: ")
-            if userInput == "":
-                replay = false
-            else:
-                Tao = userInput
-        else: #Incrementing Tao
-            Tao = Tao - 0
+        ball.color = color.blue
+        
         
         
         
