@@ -14,7 +14,7 @@ mu_k = 0.3
 #initialize mass1 and magnitude of freefall acceleration
 g = 9.8
 mass1 = 1.0 # hockey puck
-mass2 = .9 # prediction
+mass2 = .2 # prediction
 
 #useful for drawing arrows with mags
 scale_arrow = 0.5
@@ -83,23 +83,52 @@ normal_arrow = arrow(pos = block1.pos,
 #compute critical angle in RADIANS
 theta_critical = atan(mu_s)
 
-if mass1*g*sin(theta) > mass2*g:
-    print'hi smile'
-else:
-    print':(' 
+#critical mass for mass2
+mass_critl = mass1*g*sin(theta) - mass2*g
+mass_crith = mass1*g*sin(theta) - mass2*g
+print'lower', mass_critl, 'high', mass_crith
 
-#if theta > theta_critical, slipping should occur...use mu_k
-if theta > theta_critical:
+if mass1*g*sin(theta) < mass2*g:
+    print'+ a vec'
+    fric_mag = mu_k*normal_mag #compute magnitude of fric
+    fric = fric_mag*vector(cos(theta), sin(theta), 0) #make fric a vector
+    fric_arrow = arrow(pos = block1.pos, #draw fric arrow
+                       axis = scale_arrow*fric,
+                       color = vector(0, 0.4, 1))
+    F_net = normal + weight + fric #determine net force vector
+    accel = -F_net/mass1 #determine a (Newton's 2nd)
+    accel_arrow = arrow(pos = vector(-5,5,0), #draw accel arrow
+                        axis = scale_arrow*accel,
+                        color=vector(1, 0, 0))
+    accel_display = mag(accel)
+    ##accel_label = text(text='a='+accel_display+'m/s^2', #display accel
+    ##color=vector(1, 0, 0),
+    ##pos = vector(-6,5,0),
+    ##height = 0.5)
+    t = 0
+    dt = 0.01
+    sim_speed = 1
+    while abs(block1.pos.x) < incline.length/2*cos(theta):
+        rate(sim_speed/dt) #set the frames per second displayed
+        block1.velocity += accel*dt #update block1 velocity
+        block1.pos += block1.velocity*dt #update block1 position
+        string1.axis = block1.pos + vector(0.5*block1.width*cos(theta), 0.5*block1.height*sin(theta), 0) - string1.pos
+        weight_arrow.pos = block1.pos #keep arrows with block1
+        fric_arrow.pos = block1.pos
+        normal_arrow.pos = block1.pos
+        t += dt #increment the time
+elif mass1*g*sin(theta) > mass2*g:
+    print'- a vec'
     fric_mag = mu_k*normal_mag #compute magnitude of fric
     fric = fric_mag*vector(cos(theta), sin(theta), 0) #make fric a vector
     fric_arrow = arrow(pos = block1.pos, #draw fric arrow
     axis = scale_arrow*fric,
-    color = vector(0, 0.4, 1))
+                       color = vector(0, 0.4, 1))
     F_net = normal + weight + fric #determine net force vector
     accel = F_net/mass1 #determine a (Newton's 2nd)
     accel_arrow = arrow(pos = vector(-5,5,0), #draw accel arrow
-    axis = scale_arrow*accel,
-    color=vector(1, 0, 0))
+                        axis = scale_arrow*accel,
+                        color=vector(1, 0, 0))
     accel_display = mag(accel)
     ##accel_label = text(text='a='+accel_display+'m/s^2', #display accel
     ##color=vector(1, 0, 0),
@@ -118,15 +147,6 @@ if theta > theta_critical:
         normal_arrow.pos = block1.pos
         t += dt #increment the time
 else:
-    fric_mag = mass1*g*sin(theta) #compute fric magnitudue
-    fric = fric_mag*vector(cos(theta), sin(theta), 0) #compute fric vector
-    fric_arrow = arrow(pos = block1.pos, #draw fric arrow
-    axis = scale_arrow*fric,
-    color = vector(0, 0.4, 1))
-    ##accel_label = text(text='a=0', #write "a=0" on the screen
-    ##color=vector(1, 0, 0),
-    ##pos = vector(-5,5,0),
-    ##height = 0.5) 
-
+    print'equal'
 
 print'Theta Crit=',theta_critical,', a=', accel_display # <----python=bad
