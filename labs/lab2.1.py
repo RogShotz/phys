@@ -1,7 +1,7 @@
 from visual import *
 
 #angle of block1 in DEGREES
-angle_degrees = 45
+angle_degrees = 30
 
 #convert angle to RADIANS
 theta = radians(angle_degrees)
@@ -14,14 +14,7 @@ mu_k = 0.3
 #initialize mass1 and magnitude of freefall acceleration
 g = 9.8
 mass1 = 1.0 # hockey puck
-mass2 = 4.0
-# prediction
-
-#outputs
-a = 0
-T = 0
-n = 0
-f = 0
+mass2 = 4.0 # prediction
 
 #Draw a background
 background = box(pos = vector(0, 0, -10),
@@ -106,7 +99,7 @@ large_critical_mass = mass1*(sin(theta) + mu_s*cos(theta))
 
 ##=====Psudocode======
 ##if     m_2 == m_1*sin(theta)                          then m_1 is STILL and there is no friction
-##elif   m_2 <  m_1*(sin(theta) + mu_s*cos(theta))      then m1_ is STILL and friction is UP the incline
+##elif   m_2 <  m_1*(sin(theta) + mu_s*cos(theta))      then m_1 is STILL and friction is UP the incline
 ##elif   m_2 >  m_1*(sin(theta) - mu_s*cos(theta))      then m_1 is STILL and friction is DOWN the incline
 ##elif   m_2 >  m_1*(sin(theta) + mu_k*cos(theta))      then m_1 is accelerating UP the ramp and friction is DOWN the incline
 ##elif   m_2 <  m_1*(sin(theta) - mu_k*cos(theta))      then m_1 is acceleratiing DOWN the ramp and friction is UP the incline
@@ -117,7 +110,7 @@ if mass2 > small_critical_mass and mass2 < large_critical_mass:
     T_mag = mass2*g                                             #OUTPUT: solving for tension
     T = T_mag*vector(cos(theta), sin(theta), 0)
     
-    if mass2 == mass1*sin(theta):                           #compute magnitude of fric
+    if mass2 == mass1*sin(theta):                               #compute magnitude of fric
         print ("no friction")
         fric_mag = 0
         fric = vector(0, 0, 0)
@@ -139,7 +132,7 @@ if mass2 > small_critical_mass and mass2 < large_critical_mass:
     F_net = vector(F_net_x, F_net_y, 0)                                                             #make F_net a vector
     accel = vector(0, 0, 0)
 
-    accel_arrow = arrow(pos = vector(-5,5,0),                           #draw accel arrow
+    accel_arrow = arrow(pos = vector(-5,5,0),                                                       #draw accel arrow
                         axis = scale_arrow*accel,
                         color=vector(1, 0, 0))
     accel_display = mag(accel)
@@ -148,9 +141,9 @@ if mass2 > small_critical_mass and mass2 < large_critical_mass:
     sim_speed = 1
 
     #Outputs: T, a, f, n
-    a = 0             #acceleration is 0 when you are in this part of the code
+    #acceleration is 0 when you are in this part of the code
     print "Given:, M_1 =", mass1, ", M_2 =", mass2, ", theta =", angle_degrees, ", mu_s =", mu_s, ", mu_k =", mu_k, ", g =", g
-    print "looking for:, Tension =", T_mag, ", Acceleration =", a, ", friction =", fric_mag, ", Normal =", normal_mag
+    print "looking for:, Tension =", T_mag, ", Acceleration =", 0, ", friction =", fric_mag, ", Normal =", normal_mag
     
     while abs(block1.pos.x) < incline.length/2*cos(theta):
         rate(sim_speed/dt)                                              #set the frames per second displayed
@@ -170,7 +163,7 @@ else:
     T_mag = mass2*g                                             #OUTPUT: solving for tension
     T = T_mag*vector(cos(theta), sin(theta), 0)
 
-    accel_mag = 0   #determined in if statement below
+    accel_mag = 0                                               #determined in if statement below
     fric_mag = mu_k*normal_mag
     accel = vector(0, 0, 0)
     accel_2 = accel
@@ -205,11 +198,6 @@ else:
     sim_speed = 1
 
     #Outputs: T, a, f, n
-    T = T_mag
-    a = accel_mag
-    f = fric_mag
-    n - normal_mag
-
     print "Given:, M_1 =", mass1, ", M_2 =", mass2, ", theta =", angle_degrees, ", mu_s =", mu_s, ", mu_k =", mu_k, ", g =", g
     print "looking for:, Tension =", T_mag, ", Acceleration =", accel_mag, ", friction =", fric_mag, ", Normal =", normal_mag
     
@@ -217,8 +205,8 @@ else:
         rate(sim_speed/dt)                                  #set the frames per second displayed
         block1.velocity += accel*dt                         #update block1 velocity
         block1.pos += block1.velocity*dt                    #update block1 position
-        block2.velocity += accel_2*dt                   #update block2 velocity
-        block2.pos += block2.velocity*dt                #update block2 position
+        block2.velocity += accel_2*dt                       #update block2 velocity
+        block2.pos += block2.velocity*dt                    #update block2 position
         string1.axis = block1.pos + vector(0.5*block1.width*cos(theta),
                                            0.5*block1.height*sin(theta),
                                            0) - string1.pos
