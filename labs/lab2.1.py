@@ -1,7 +1,7 @@
 from visual import *
 
 #angle of block1 in DEGREES
-angle_degrees = 30
+angle_degrees = 45
 
 #convert angle to RADIANS
 theta = radians(angle_degrees)
@@ -13,8 +13,8 @@ mu_k = 0.3
 
 #initialize mass1 and magnitude of freefall acceleration
 g = 9.8
-mass1 = 1.0 # hockey puck
-mass2 = 4.0 # prediction
+mass1 = 2.0 # hockey puck
+mass2 = 0.707 # prediction
 
 #Draw a background
 background = box(pos = vector(0, 0, -10),
@@ -152,6 +152,7 @@ if mass2 > small_critical_mass and mass2 < large_critical_mass:
         string1.axis = block1.pos + vector(0.5*block1.width*cos(theta),
                                            0.5*block1.height*sin(theta),
                                            0) - string1.pos
+        string2.axis = block2.pos + vector(0, 0.5*block2.height, 0) - string2.pos
         weight_arrow.pos = block1.pos                                   #keep arrows with block1
         fric_arrow.pos = block1.pos
         normal_arrow.pos = block1.pos
@@ -200,6 +201,7 @@ else:
     #Outputs: T, a, f, n
     print "Given:, M_1 =", mass1, ", M_2 =", mass2, ", theta =", angle_degrees, ", mu_s =", mu_s, ", mu_k =", mu_k, ", g =", g
     print "looking for:, Tension =", T_mag, ", Acceleration =", accel_mag, ", friction =", fric_mag, ", Normal =", normal_mag
+    print "Critical mass for mass 2: ,", small_critical_mass, large_critical_mass
     
     while (abs(block1.pos.x) < incline.length/2*cos(theta)): #and possibly (block2.pos.y < pulley.pos.y - pulley.radius - block2.length / 2)
         rate(sim_speed/dt)                                  #set the frames per second displayed
@@ -210,6 +212,7 @@ else:
         string1.axis = block1.pos + vector(0.5*block1.width*cos(theta),
                                            0.5*block1.height*sin(theta),
                                            0) - string1.pos
+        string2.axis = block2.pos + vector(0, 0.5*block2.height, 0) - string2.pos        
         weight_arrow.pos = block1.pos                       #keep arrows with block1
         fric_arrow.pos = block1.pos
         normal_arrow.pos = block1.pos
