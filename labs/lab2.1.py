@@ -1,7 +1,7 @@
 from visual import *
 
 #angle of block1 in DEGREES
-angle_degrees = 45
+angle_degrees = 90
 
 #convert angle to RADIANS
 theta = radians(angle_degrees)
@@ -14,7 +14,7 @@ mu_k = 0.3
 #initialize mass1 and magnitude of freefall acceleration
 g = 9.8
 mass1 = 2.0 # hockey puck
-mass2 = 0.707 # prediction
+mass2 = 0.5 # prediction
 
 #Draw a background
 background = box(pos = vector(0, 0, -10),
@@ -39,6 +39,7 @@ block1 = box(length = 2,
              height = 2,
              color = vector(1, 1, 1),
              opacity = 0.5)
+
 #position block1 such that it rests on middle of board
 block1.pos = incline.pos + vector(0, 0.5*block1.height, 0)
 
@@ -91,13 +92,13 @@ normal_arrow = arrow(pos = block1.pos,
                      color = vector(1, 0, 1))
 
 #compute critical angle in RADIANS
-theta_critical = atan(mu_s)         #WE DONT NEED THIS?
+theta_critical = atan(mu_s)         #WE DONT NEED THIS? 
 
 #compute critical mass for mass2
 small_critical_mass = mass1*(sin(theta) - mu_s*cos(theta))
 large_critical_mass = mass1*(sin(theta) + mu_s*cos(theta))
 
-##=====Psudocode======
+##=====Pseudocode======
 ##if     m_2 == m_1*sin(theta)                          then m_1 is STILL and there is no friction
 ##elif   m_2 <  m_1*(sin(theta) + mu_s*cos(theta))      then m_1 is STILL and friction is UP the incline
 ##elif   m_2 >  m_1*(sin(theta) - mu_s*cos(theta))      then m_1 is STILL and friction is DOWN the incline
@@ -105,7 +106,7 @@ large_critical_mass = mass1*(sin(theta) + mu_s*cos(theta))
 ##elif   m_2 <  m_1*(sin(theta) - mu_k*cos(theta))      then m_1 is acceleratiing DOWN the ramp and friction is UP the incline
 
 
-#=========Static Friction and Zero Friction ===================
+#=========Static Friction and Zero Friction (zero acceleration)===================
 if mass2 > small_critical_mass and mass2 < large_critical_mass:
     T_mag = mass2*g                                             #OUTPUT: solving for tension
     T = T_mag*vector(cos(theta), sin(theta), 0)
@@ -131,11 +132,13 @@ if mass2 > small_critical_mass and mass2 < large_critical_mass:
     F_net_y = T_mag*sin(theta) + normal_mag*cos(theta) - fric_mag*sin(theta) - mass1*g
     F_net = vector(F_net_x, F_net_y, 0)                                                             #make F_net a vector
     accel = vector(0, 0, 0)
-
+    accel_mag = mag(accel)
+    
     accel_arrow = arrow(pos = vector(-5,5,0),                                                       #draw accel arrow
                         axis = scale_arrow*accel,
                         color=vector(1, 0, 0))
-    accel_display = mag(accel)
+    
+    
     t = 0
     dt = 0.01
     sim_speed = 1
@@ -157,6 +160,7 @@ if mass2 > small_critical_mass and mass2 < large_critical_mass:
         fric_arrow.pos = block1.pos
         normal_arrow.pos = block1.pos
         t += dt                                                         #increment the time
+        #======Need to 
         
 #=========Kinetic Friction ===================
 
@@ -168,7 +172,7 @@ else:
     fric_mag = mu_k*normal_mag
     accel = vector(0, 0, 0)
     accel_2 = accel
-    going_up = false
+    
     if mass2 > mass1*(sin(theta) + mu_k*cos(theta)):                                        #friction is DOWN the incline
         fric = -fric_mag*vector(cos(theta), sin(theta), 0)                                  #make fric a vector
         print ("friction DOWN the incline")
@@ -176,7 +180,7 @@ else:
         accel = accel_mag*vector(cos(theta), sin(theta), 0)                                 #acceleration is Up the incline (used for block1)
         print ("accelerate Up the incline")
         accel_2.y = -accel_mag
-        going_up = false
+        
     elif mass2 < mass1*(sin(theta) + mu_k*cos(theta)):                                      #friction is UP the incline
         fric = fric_mag*vector(cos(theta), sin(theta), 0)                                   #make fric a vector
         print ("friction UP the incline")
@@ -184,7 +188,6 @@ else:
         accel = -accel_mag*vector(cos(theta), sin(theta), 0)                                #acceleration is DOWN the incline (used for block1)
         print ("accelerate DOWN the incline")
         accel_2.y = accel_mag
-        going_up = true
     
     fric_arrow = arrow(pos = block1.pos,                    #draw fric arrow
                        axis = scale_arrow*fric,
@@ -193,7 +196,7 @@ else:
     accel_arrow = arrow(pos = vector(-5,5,0),               #draw accel arrow
                         axis = scale_arrow*accel,
                         color=vector(1, 0, 0))
-    accel_display = mag(accel)
+
     t = 0
     dt = 0.01
     sim_speed = 1
@@ -202,7 +205,7 @@ else:
     print "Given:, M_1 =", mass1, ", M_2 =", mass2, ", theta =", angle_degrees, ", mu_s =", mu_s, ", mu_k =", mu_k, ", g =", g
     print "looking for:, Tension =", T_mag, ", Acceleration =", accel_mag, ", friction =", fric_mag, ", Normal =", normal_mag
     print "Critical mass for mass 2: ,", small_critical_mass, large_critical_mass
-    
+    #while loop abs(block1.pos.x) < incline.length/2*cos(theta)
     while (abs(block1.pos.x) < incline.length/2*cos(theta)): #and possibly (block2.pos.y < pulley.pos.y - pulley.radius - block2.length / 2)
         rate(sim_speed/dt)                                  #set the frames per second displayed
         block1.velocity += accel*dt                         #update block1 velocity
