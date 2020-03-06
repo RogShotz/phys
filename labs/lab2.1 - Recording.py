@@ -2,12 +2,12 @@ from visual import *
 
 ##=======To Do List========##
 
-scene.width = 900 #700 = Shad
+scene.width = 950 #700 = Shad
 scene.height = 735 #800 = Shad
 
 
 #angle of block1 in DEGREES
-angle_degrees = 30
+angle_degrees = 65 # IRL 65
 
 #convert angle to RADIANS
 theta = radians(angle_degrees)
@@ -20,13 +20,13 @@ mu_k = 0.3
 #initialize mass and magnitude of freefall acceleration
 g = 9.8
 mass1 = 0.162 # hockey puck Modelled by real pick 0.162
-mass2 = 0.3 # prediction
+mass2 = 0.34 # prediction IRL .34
 
 #Draw a background
 background = box(pos = vector(0, 0, -5),
                  length = 30,
                  width = .01,
-                 height = 45,
+                 height = 36,
                  color = color.green)
 
 #useful for drawing arrows with mags
