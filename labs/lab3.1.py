@@ -36,12 +36,12 @@ C_arrow = arrow(pos=A + B, axis=C, shaftwidth=0.4,
                 color=color.yellow)
 C_ball = sphere(pos=A + B, radius=0.4,
                 color=color.green)
-R_arrow = arrow(pos=(0, 0, 0), axis=R, shaftwidth=0.4,
+R_arrow = arrow(pos=vector(0, 0, 0), axis=R, shaftwidth=0.4,
                 color=color.green)
 R_ball = sphere(pos=A + B + C, radius=0.4,
                 color=color.green)
-BCross_arrow = arrow(pos=(0, 0, 0), axis=B, shaftwidth=0.4,
+BCross_arrow = arrow(pos=vector(0, 0, 0), axis=B, shaftwidth=0.4,
                 color=color.blue) #since A is already drawn at origin
-RCross_arrow = arrow(pos=(0, 0, 0), axis=ABCross, shaftwidth=0.4,
+RCross_arrow = arrow(pos=vector(0, 0, 0), axis=ABCross, shaftwidth=0.4,
                 color=color.green)
-print "R =", R, "; A X B =", ABCross, "Angle Between A and B =", ABAngle
+print ("R =", R, "; A X B =", ABCross, "; Angle Between A and B =", ABAngle)
