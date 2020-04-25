@@ -4,6 +4,8 @@ from visual import *
 line_x=cylinder(pos=vector(-5, 0, 0), axis=vector(10, 0, 0), radius=0.05)
 line_y=cylinder(pos=vector(0, -5, 0), axis=vector(0, 10, 0), radius=0.05)
 line_z=cylinder(pos=vector(0, 0, -5), axis=vector(0, 0, 10), radius=0.05)
+
+
 lamb = 1.0 #LINEAR mass density of rod
 L = 5.1 #length of rod
 N = 21 #number of slices for rod, must be >1
@@ -21,8 +23,9 @@ while (i < N):
     numer += rod[i].dm*rod[i].pos
     denom += rod[i].dm
     i += 1
+    
 COM = numer/denom
-print"Center of mass is at", COM
+print("Center of mass is at", COM)
 COM_indicator = pyramid(pos=COM,
-size=3*vector(dx,dx,dx),
-color=vector(1, 0.2, 0.8)) 
+                        size=3*vector(dx,dx,dx),
+                        color=vector(1, 0.2, 0.8)) 
