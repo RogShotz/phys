@@ -36,7 +36,7 @@
       <recent name="C:\Users\rogsh\Documents\GitHub\phys\labs" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.lab1Coulombq2">
+  <component name="RunManager" selected="Python.lab1Coulombq9moving">
     <configuration name="lab1Coulomb" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="phys" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -79,7 +79,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="lab1Coulombq4_21_3" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="lab1Coulombq5_22_6" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="phys" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -91,7 +91,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/phys163labs/lab1Coulombq4_21_3.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/phys163labs/lab1Coulombq5_22_6.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -121,7 +121,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="lab1MovingBall01" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="lab1Coulombq9moving" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="phys" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -133,7 +133,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/phys163labs/lab1MovingBall01.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/phys163labs/lab1Coulombq9moving.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -144,18 +144,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.lab1Coulombq6moving" />
-      <item itemvalue="Python.lab1Coulombq4_21_3" />
-      <item itemvalue="Python.lab1Coulomb" />
-      <item itemvalue="Python.lab1MovingBall01" />
       <item itemvalue="Python.lab1Coulombq2" />
+      <item itemvalue="Python.lab1Coulombq9moving" />
+      <item itemvalue="Python.lab1Coulombq5_22_6" />
+      <item itemvalue="Python.lab1Coulomb" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.lab1Coulombq9moving" />
+        <item itemvalue="Python.lab1Coulomb" />
+        <item itemvalue="Python.lab1Coulombq5_22_6" />
         <item itemvalue="Python.lab1Coulombq2" />
         <item itemvalue="Python.lab1Coulombq6moving" />
-        <item itemvalue="Python.lab1MovingBall01" />
-        <item itemvalue="Python.lab1Coulomb" />
-        <item itemvalue="Python.lab1Coulombq4_21_3" />
       </list>
     </recent_temporary>
   </component>
@@ -181,22 +181,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="923" y="292" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1598379439840" />
-    <state width="1899" height="310" key="GridCell.Tab.0.bottom" timestamp="1598406439896">
+    <state width="1899" height="348" key="GridCell.Tab.0.bottom" timestamp="1598419896522">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="310" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1598406439896" />
-    <state width="1899" height="310" key="GridCell.Tab.0.center" timestamp="1598406439895">
+    <state width="1899" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1598419896522" />
+    <state width="1899" height="348" key="GridCell.Tab.0.center" timestamp="1598419896522">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="310" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1598406439895" />
-    <state width="1899" height="310" key="GridCell.Tab.0.left" timestamp="1598406439895">
+    <state width="1899" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1598419896522" />
+    <state width="1899" height="348" key="GridCell.Tab.0.left" timestamp="1598419896521">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="310" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1598406439895" />
-    <state width="1899" height="310" key="GridCell.Tab.0.right" timestamp="1598406439896">
+    <state width="1899" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1598419896521" />
+    <state width="1899" height="348" key="GridCell.Tab.0.right" timestamp="1598419896522">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="310" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1598406439896" />
+    <state width="1899" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1598419896522" />
+    <state width="1899" height="348" key="GridCell.Tab.1.bottom" timestamp="1598419896522">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1598419896522" />
+    <state width="1899" height="348" key="GridCell.Tab.1.center" timestamp="1598419896522">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1598419896522" />
+    <state width="1899" height="348" key="GridCell.Tab.1.left" timestamp="1598419896522">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1598419896522" />
+    <state width="1899" height="348" key="GridCell.Tab.1.right" timestamp="1598419896522">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1598419896522" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1598406087594">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -53,6 +53,7 @@ r_3to1 = ball1.pos - ball3.pos
 F_3on1 = k * q1 * q3 * r_3to1 / mag(r_3to1) ** 3
 print(F_2on1)  # this print statement allows you to check the math
 print(F_3on1)
+print(F_3on1+F_2on1)
 
 # draw an arrow representing the force, scale_arrow changes size of all force arrows
 F_arrow_2on1 = arrow(pos=r1, axis=scale_arrow * F_2on1, color=c1)
