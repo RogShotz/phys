@@ -41,49 +41,7 @@
       <recent name="C:\Users\rogsh\Documents\GitHub\phys\labs" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.lab3q2">
-    <configuration name="lab2q6" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="phys" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/phys163labs/lab2" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/phys163labs/lab2/lab2q6.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="lab3q1 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="phys" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/phys163labs/lab3" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/phys163labs/lab3/lab3q1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.lab4postestob">
     <configuration name="lab3q1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="phys" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -96,7 +54,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\rogsh\Documents\GitHub\phys\phys163labs\lab3\lab3q1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/phys163labs/lab3/lab3q1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -118,6 +76,48 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/phys163labs/lab3/lab3q2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="lab4" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="phys" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/phys163labs/lab4 pres" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/phys163labs/lab4 pres/lab4.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="lab4postestob" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="phys" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/phys163labs/lab4 pres" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/phys163labs/lab4 pres/lab4postestob.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -148,19 +148,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.lab2q6" />
       <item itemvalue="Python.quiz" />
       <item itemvalue="Python.lab3q1" />
-      <item itemvalue="Python.lab3q1 (1)" />
       <item itemvalue="Python.lab3q2" />
+      <item itemvalue="Python.lab4" />
+      <item itemvalue="Python.lab4postestob" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.lab4postestob" />
+        <item itemvalue="Python.lab4" />
         <item itemvalue="Python.lab3q2" />
-        <item itemvalue="Python.lab3q1 (1)" />
         <item itemvalue="Python.lab3q1" />
         <item itemvalue="Python.quiz" />
-        <item itemvalue="Python.lab2q6" />
       </list>
     </recent_temporary>
   </component>
@@ -186,45 +186,45 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="923" y="292" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1598379439840" />
-    <state width="1899" height="207" key="GridCell.Tab.0.bottom" timestamp="1599603118494">
+    <state width="1899" height="207" key="GridCell.Tab.0.bottom" timestamp="1603840030044">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="207" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1599603118494" />
-    <state width="1899" height="207" key="GridCell.Tab.0.center" timestamp="1599603118494">
+    <state width="1899" height="207" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1603840030044" />
+    <state width="1899" height="207" key="GridCell.Tab.0.center" timestamp="1603840030044">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="207" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1599603118494" />
-    <state width="1899" height="207" key="GridCell.Tab.0.left" timestamp="1599603118494">
+    <state width="1899" height="207" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1603840030044" />
+    <state width="1899" height="207" key="GridCell.Tab.0.left" timestamp="1603840030044">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="207" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1599603118494" />
-    <state width="1899" height="207" key="GridCell.Tab.0.right" timestamp="1599603118494">
+    <state width="1899" height="207" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1603840030044" />
+    <state width="1899" height="207" key="GridCell.Tab.0.right" timestamp="1603840030044">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="207" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599603118494" />
-    <state width="1899" height="348" key="GridCell.Tab.1.bottom" timestamp="1598419896522">
+    <state width="1899" height="207" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1603840030044" />
+    <state width="1899" height="348" key="GridCell.Tab.1.bottom" timestamp="1603839157062">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1598419896522" />
-    <state width="1899" height="348" key="GridCell.Tab.1.center" timestamp="1598419896522">
+    <state width="1899" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1603839157062" />
+    <state width="1899" height="348" key="GridCell.Tab.1.center" timestamp="1603839157062">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1598419896522" />
-    <state width="1899" height="348" key="GridCell.Tab.1.left" timestamp="1598419896522">
+    <state width="1899" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1603839157062" />
+    <state width="1899" height="348" key="GridCell.Tab.1.left" timestamp="1603839157061">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1598419896522" />
-    <state width="1899" height="348" key="GridCell.Tab.1.right" timestamp="1598419896522">
+    <state width="1899" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1603839157061" />
+    <state width="1899" height="348" key="GridCell.Tab.1.right" timestamp="1603839157062">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1598419896522" />
+    <state width="1899" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1603839157062" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1598406087594">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1598406087594" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1599599464137">
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1603839716453">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599599464137" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1603839716453" />
   </component>
 </project>
