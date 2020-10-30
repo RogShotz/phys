@@ -22,11 +22,7 @@ c = 5  # number of current arrows
 B_tot = vec(0, 0, 0)
 B = vec(0, 0, 0)
 p = vec(0, 0, 0)
-x = -15
-y = -15
 z = 0
-x_max = 15
-y_max = 15
 dx = 1
 dy = 1
 
@@ -70,14 +66,13 @@ def get_b(POI):
 B_tot += ring_gen(ring1pos)
 B_tot += ring_gen(ring2pos)
 
-while y < y_max:
-    while x < x_max:
+slope_range = abs(ring1pos) + 5  # tweak var at end to expand or shrink range of b arrows
+
+for y in range(-slope_range, slope_range):
+    for x in range(-slope_range, slope_range):
         fieldPOI = vec(x, y, z)
         field = get_b(fieldPOI)
         field_arrow = arrow(pos=fieldPOI, axis=hat(field), color=color.green)
-        x += dx
-    y += dy
-    x = -15
 
 # Animations Initialization
 t = 0
