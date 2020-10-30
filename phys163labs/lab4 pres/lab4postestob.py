@@ -18,7 +18,7 @@ dtheta = 2 * pi / n  # spacing between adjacent balls in rod
 ring = []  # creates empty list
 
 # Variable Initializations
-i = 3e-3  # current
+i = 8e-3  # current
 c = 5  # number of current arrows
 B_tot = vec(0, 0, 0)
 B = vec(0, 0, 0)
@@ -30,7 +30,7 @@ mu_o = 4 * pi * 10e-7
 POI = vec(0, 0, -.2)
 ball = sphere(pos=POI, radius=.2, color=color.red, make_trail=True, trail_type="curve")
 ball.q = -1.602e-19
-ball.v = vec(.1, -.05, 0)
+ball.v = vec(1.23, -.9, 0)
 ball.m = 9.11e-31
 
 
@@ -83,7 +83,7 @@ for y in range(-slope_range + 5, slope_range - 5):
 
 # Animations Initialization
 t = 0
-dt = .05
+dt = .01
 simspeed = 10000
 
 while t < 8000:
