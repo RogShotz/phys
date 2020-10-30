@@ -1,42 +1,44 @@
 from vpython import *
 
 scene.height = 720
-scene.width = 720
-scale = 5
+scene.width = 1080
+scale = .0001  # converting calcs down to milimeters (rads are in 10s), also makes it too small for user though
 
 # TODO: use checkboxes to enable certain attributes, fields, forces etc.
 
 # Ring Attributes
-ring1pos = -10  # the x position of the ring
+ring1pos = -15  # the x position of the ring
 ring2pos = -ring1pos
-rad = 2.5  # radius of ring
+ring3pos = -6
+ring4pos = -ring3pos
+ring5pos = 0
+
 n = 100  # number of segments
 dtheta = 2 * pi / n  # spacing between adjacent balls in rod
-length = rad * (2 * pi)
-seg_length = length / n
 ring = []  # creates empty list
 
 # Variable Initializations
-i = 50  # current
+i = 3e-3  # current
 c = 5  # number of current arrows
 B_tot = vec(0, 0, 0)
 B = vec(0, 0, 0)
 p = vec(0, 0, 0)
 z = 0
-dx = 1
-dy = 1
+mu_o = 4 * pi * 10e-7
 
 # POI Initializations
 POI = vec(0, 0, -.2)
 ball = sphere(pos=POI, radius=.2, color=color.red, make_trail=True, trail_type="curve")
-ball.q = e - 6
+ball.q = -1.602e-19
 ball.v = vec(.1, -.05, 0)
-ball.m = e - 100
+ball.m = 9.11e-31
 
 
-def ring_gen(z_pos):
+def ring_gen(z_pos, rad):  # creates rings
     B_func = vec(0, 0, 0)
-    for theta in arange(0, 2 * pi, dtheta):  # create rings
+    length = rad * (2 * pi)
+    seg_length = length / n
+    for theta in arange(0, 2 * pi, dtheta):
         segment = cylinder(pos=vec(z_pos, rad * sin(theta), rad * cos(theta)), radius=0.25, color=color.red,
                            axis=vec(0, seg_length * sin(radians(90) - theta), seg_length * cos(theta + radians(90))))
         ring.append(segment)  # cylinder segments of rings
@@ -45,30 +47,35 @@ def ring_gen(z_pos):
             arrow(pos=vec(z_pos, rad * sin(theta), rad * cos(theta) + segment.radius / 2),
                   axis=vec(0, rad / 1.5 * sin(radians(90) - theta), rad / 1.5 * cos(radians(90) + theta)))
 
-        r = POI - (segment.pos + 0.5 * segment.axis)
+        r = POI - (segment.pos + 0.5 * segment.axis * scale)
 
-        ds = segment.axis
+        ds = segment.axis * scale
         B_func += i * cross(ds, r) / mag(r) ** 3
     return B_func
 
 
-def get_b(POI):
+def get_b(POI):  # gets b_ext from any POI
     B_new = vec(0, 0, 0)
     for j in range(0, len(ring)):
-        r = POI - (ring[j].pos + 0.5 * ring[j].axis)
+        r = POI - (ring[j].pos + 0.5 * ring[j].axis * scale)
 
-        ds = ring[j].axis
-        B_new += i * cross(ds, r) / mag(r) ** 3
+        ds = ring[j].axis * scale
+        B_new += i * mu_o * cross(ds, r) / mag(r) ** 3
     return B_new
 
 
 # Ring Generations
-B_tot += ring_gen(ring1pos)
-B_tot += ring_gen(ring2pos)
+out_rad = 2.5
+in_rad = 10
+B_tot += ring_gen(ring1pos, out_rad)
+B_tot += ring_gen(ring2pos, out_rad)
+B_tot += ring_gen(ring3pos, in_rad)
+B_tot += ring_gen(ring4pos, in_rad)
+B_tot += ring_gen(ring5pos, in_rad)
 
-slope_range = abs(ring1pos) + 5  # tweak var at end to expand or shrink range of b arrows
+slope_range = abs(ring1pos) + 5  # tweak var at end to expand or shrink slope field range of b arrows
 
-for y in range(-slope_range, slope_range):
+for y in range(-slope_range + 5, slope_range - 5):
     for x in range(-slope_range, slope_range):
         fieldPOI = vec(x, y, z)
         field = get_b(fieldPOI)
@@ -76,8 +83,8 @@ for y in range(-slope_range, slope_range):
 
 # Animations Initialization
 t = 0
-dt = .1
-simspeed = 1000
+dt = .05
+simspeed = 10000
 
 while t < 8000:
     rate(simspeed / dt)
