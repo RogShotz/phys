@@ -1,68 +1,67 @@
 from vpython import *
+
 scene.height = 720
 scene.width = 720
-
-line_x = cylinder(pos=vec(-5, 0, 0), axis=vec(10, 0, 0), radius=0.05)
-line_y = cylinder(pos=vec(0, -5, 0), axis=vec(0, 10, 0), radius=0.05)
-line_z = cylinder(pos=vec(0, 0, -5), axis=vec(0, 0, 10), radius=0.05)
-
 scale = 5
-# TODO: use checkboxs to enable certain attributes, fields, forces etc.
+
+# TODO: use checkboxes to enable certain attributes, fields, forces etc.
 
 # Ring Attributes
-ring1pos = -10
-ring2pos = 10
-
+ring1pos = -10  # the x position of the ring
+ring2pos = -ring1pos
 rad = 2.5  # radius of ring
-n = 50  # number of segments
-dtheta = 2 * pi / (n)  # spacing between adjacent balls in rod
+n = 100  # number of segments
+dtheta = 2 * pi / n  # spacing between adjacent balls in rod
 length = rad * (2 * pi)
 seg_length = length / n
 ring = []  # creates empty list
-ringvis = []
-i = 1  # current
+
+# Variable Initializations
+i = 50  # current
 c = 5  # number of current arrows
 B_tot = vec(0, 0, 0)
 B = vec(0, 0, 0)
+p = vec(0, 0, 0)
+x = -15
+y = -15
+z = 0
+x_max = 15
+y_max = 15
+dx = 1
+dy = 1
 
 # POI Initializations
-POI = vec(-4, 3, 0)
-ball = sphere(pos=POI, radius=.1, color=color.red)
-ball.q = 1e-6
-ball.v = vec(.5, 1, 0)
-ball.m = 1e-6
+POI = vec(0, 0, -.2)
+ball = sphere(pos=POI, radius=.2, color=color.red, make_trail=True, trail_type="curve")
+ball.q = e - 6
+ball.v = vec(.1, -.05, 0)
+ball.m = e - 100
 
 
 def ring_gen(z_pos):
     B_func = vec(0, 0, 0)
-    for theta in arange(0, 2 * pi, dtheta):
-        segment = cylinder(pos=vec(z_pos, rad * sin(theta), rad * cos(theta)), radius=0.25,
+    for theta in arange(0, 2 * pi, dtheta):  # create rings
+        segment = cylinder(pos=vec(z_pos, rad * sin(theta), rad * cos(theta)), radius=0.25, color=color.red,
                            axis=vec(0, seg_length * sin(radians(90) - theta), seg_length * cos(theta + radians(90))))
-        segment.color = color.red
-        ring.append(segment)
+        ring.append(segment)  # cylinder segments of rings
 
-        if (len(ring)) % round((n / c)) == 0:
-            current = arrow(pos=vec(z_pos, rad * sin(theta), rad * cos(theta) + segment.radius / 2),
-                            axis=vec(0, rad / 1.5 * sin(radians(90) - theta), rad / 1.5 * cos(radians(90) + theta)))
+        if (len(ring)) % round((n / c)) == 0:  # construct arrows indicating current
+            arrow(pos=vec(z_pos, rad * sin(theta), rad * cos(theta) + segment.radius / 2),
+                  axis=vec(0, rad / 1.5 * sin(radians(90) - theta), rad / 1.5 * cos(radians(90) + theta)))
 
         r = POI - (segment.pos + 0.5 * segment.axis)
 
         ds = segment.axis
         B_func += i * cross(ds, r) / mag(r) ** 3
-
     return B_func
 
 
-def get_b(POI, z_pos):
+def get_b(POI):
     B_new = vec(0, 0, 0)
-    for theta in arange(0, 2 * pi, dtheta):
-        segment = cylinder(pos=vec(z_pos, rad * sin(theta), rad * cos(theta)), radius=0.25,
-                           axis=vec(0, seg_length * sin(radians(90) - theta), seg_length * cos(theta + radians(90))),
-                           opacity=0)
-        ringvis.append(segment)
-        r = POI - (segment.pos + 0.5 * segment.axis)
+    for j in range(0, len(ring)):
+        r = POI - (ring[j].pos + 0.5 * ring[j].axis)
 
-        ds = segment.axis
+        ds = ring[j].axis
         B_new += i * cross(ds, r) / mag(r) ** 3
     return B_new
 
@@ -71,25 +70,27 @@ def get_b(POI, z_pos):
 B_tot += ring_gen(ring1pos)
 B_tot += ring_gen(ring2pos)
 
+while y < y_max:
+    while x < x_max:
+        fieldPOI = vec(x, y, z)
+        field = get_b(fieldPOI)
+        field_arrow = arrow(pos=fieldPOI, axis=hat(field), color=color.green)
+        x += dx
+    y += dy
+    x = -15
+
 # Animations Initialization
 t = 0
-dt = .001
-simspeed = 5
+dt = .1
+simspeed = 1000
 
-F_arrow = arrow(pos=ball.pos,axis=vec(0, 0, 0), color=color.green)
-v_arrow = arrow(pos=ball.pos, axis=ball.v, color=color.red)
-while t < 40:
+while t < 8000:
     rate(simspeed / dt)
-    B += get_b(ball.pos, ring1pos)
+    B = get_b(ball.pos)
     F = ball.q * cross(ball.v, B)
+    print(mag(B))
     ball.v += F * dt / ball.m
     ball.pos += ball.v * dt
-
-    F_arrow.pos = ball.pos
-    F_arrow.axis = scale * F
-
-    v_arrow.pos = ball.pos
-    v_arrow.axis = ball.v
-
+    if mag(ball.pos) * 0.8 > ring2pos:  # stops the loops so it doesnt zoom out because of a launched particle
+        break
     t += dt
-print(B_tot)
