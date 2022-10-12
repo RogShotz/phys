@@ -1,4 +1,4 @@
-from visual import *
+from vpython import *
 
 #Creating backgroud plane (box object)
 background = box(size = vector(4.5, 4.5, .01),

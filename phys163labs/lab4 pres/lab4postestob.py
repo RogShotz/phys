@@ -1,7 +1,7 @@
 from vpython import *
 
-scene.height = 720
-scene.width = 1080
+scene.height = 900
+scene.width = 1300
 scale = .0001  # converting calcs down to milimeters (rads are in 10s), also makes it too small for user though
 
 # TODO: use checkboxes to enable certain attributes, fields, forces etc.
@@ -76,7 +76,7 @@ B_tot += ring_gen(ring5pos, in_rad)
 
 slope_range = abs(ring1pos) + 5  # tweak var at end to expand or shrink slope field range of b arrows
 field_max = 1.5e-11
-for y in range(-slope_range + 5, slope_range - 5):
+for y in range(-slope_range + 5, slope_range - 5):  # generate b field arrows
     for x in range(-slope_range, slope_range):
         fieldPOI = vec(x, y, z)
         field = get_b(fieldPOI)
@@ -98,7 +98,7 @@ t = 0
 dt = .01
 simspeed = 10000
 
-while t < 8000 and mag(ball.pos) * 0.8 < ring2pos:
+while t < 8000 and mag(ball.pos) * 0.8 < ring2pos:  # calculations and animations
     rate(simspeed / dt)
     B = get_b(ball.pos)
     F = ball.q * cross(ball.v, B)
